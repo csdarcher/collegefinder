@@ -1,11 +1,13 @@
 <template>
-  <h1>Your future starts here.</h1> 
-  <select v-model="selected">
-    <option v-for="state in states" v-bind:value="state.value">
-      {{ option.text }}
-    </option>
-  </select>
-  <span>Selected: {{ selected }}</span>      
+  <div id="home">
+    <h1>Your future starts here.</h1> 
+    <select v-model="selected">
+      <option v-for="state in states" v-bind:value="state.abbreviation">
+        {{ state.name }}
+      </option>
+    </select>
+    <span>Selected: {{ selected }}</span>
+  </div>      
 </template>
 
 <script>
