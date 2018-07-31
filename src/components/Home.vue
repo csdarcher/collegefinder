@@ -1,12 +1,15 @@
 <template>
   <div id="home">
     <h1>Your future starts here.</h1> 
-    <select v-model="selected">
-      <option v-for="state in states" v-bind:value="state.abbreviation">
-        {{ state.name }}
-      </option>
-    </select>
-    <span>Selected: {{ selected }}</span>
+      <form v-on:submit.prevent="getSchoolss"> 
+        <select v-model="selected">
+          <option v-for="state in states" v-bind:value="state.abbreviation">
+            {{ state.name }}
+          </option>
+        </select>
+        <span>Selected: {{ selected }}</span>
+        <input class="button" type="submit" value="Submit">
+      </form>
   </div>      
 </template>
 
@@ -21,7 +24,6 @@ export default {
           name: "Alabama",
           abbreviation: "AL"
         },
-
         {
           name: "Alabama",
           abbreviation: "AL"
@@ -262,6 +264,14 @@ export default {
     };
   }
 };
+
+// Pull information from API 
+//   methods: {
+//     getSchools: function() {
+//       axios.get("https://api.data.gov/ed/collegescorecard/v1/schools?api_key=d9xeq99pO8xRBij92yBUzmSIPR1P6v4RDAyQN53X&fields=school.name")
+//     }
+// };
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
