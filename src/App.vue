@@ -26,7 +26,9 @@ export default {
   color: silver;
 }
 
-
+body {
+   background-color: #cc0000;
+}
 
 app {
     height: 100%;

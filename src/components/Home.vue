@@ -1,9 +1,10 @@
 <template>
   <div id="home">
     <h1>Your future starts here.</h1> 
-      <form v-on:submit.prevent="getSchoolss"> 
+     <p> Pick a state below to find out more about it's colleges and universities. </p>
+      <form v-on:submit.prevent="getSchools"> 
         <select v-model="selected">
-          <option v-for="state in states" v-bind:value="state.abbreviation">
+          <option v-for="state in states" v-bind:value="state.abbreviaton">
             {{ state.name }}
           </option>
         </select>
@@ -267,11 +268,17 @@ export default {
 
 // Pull information from API 
 //   methods: {
-//     getSchools: function() {
-//       axios.get("https://api.data.gov/ed/collegescorecard/v1/schools?api_key=d9xeq99pO8xRBij92yBUzmSIPR1P6v4RDAyQN53X&fields=school.name")
-//     }
-// };
-
+//     getColleges: function () {
+//       API.get('find', {
+//         params: {
+//             q: this.query,
+//         }
+//       })
+//       .then(response => {
+//         this.results = response.data
+//       })
+//   },
+// }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
