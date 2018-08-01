@@ -271,21 +271,20 @@ export default {
         }
       ]
     };
-  }
+  },
 };
 
 // Pull information from API 
   methods: {
     findShools: function () {
       axios.get('https://api.data.gov/ed/collegescorecard/v1/schools.json?api_key=d9xeq99pO8xRBij92yBUzmSIPR1P6v4RDAyQN53X&fields=school.name&school.state', {
-        params: {
-          school.state: state.abbreviaton,
-        }
+        // params: {
+        // }
       })
       .then(response => {
         this.schools = response.data
-      })
-  },
+      });
+  }
 }
 
 </script>
