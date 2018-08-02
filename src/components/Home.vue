@@ -11,11 +11,13 @@
         <span>Selected: {{ selectedState }}</span>
         <input class="button" type="submit" value="Submit">
       </form> 
-      <ul class="schools" v-if="schools && schools.list.length > 0">
-        <li v-for="schools in results">
-            <h2>{{ school.name }}, {{ school.location}}</h2>
-        </li>
-    </ul>
+        <div class="school-list">
+            <ul class="schools" v-if="schools && schools.list.length > 0">
+              <li v-for="schools in results">
+                  <h2>{{ school.name }}, {{ school.location}}</h2>
+              </li>
+          </ul>
+        </div>  
   </div>      
 </template>
 
