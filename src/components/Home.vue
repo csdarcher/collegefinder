@@ -4,32 +4,33 @@
      <p> Pick a state below to find out more about it's colleges and universities. </p>
       <form v-on:submit.prevent="findSchools"> 
         <select v-model="selected">
-          <option v-for="state in states" v-bind:value="state.abbreviaton">
-            {{ state.name }}
+          <option v-for="state in states" v-bind:value="state.abbreviation">
+            {{ state.name }} 
           </option>
         </select>
         <span>Selected: {{ selectedState }}</span>
         <input class="button" type="submit" value="Submit">
       </form> 
         <div class="school-list">
-            <ul class="schools" v-if="schools && schools.list.length > 0">
-              <li v-for="schools in results">
-                  <h2>{{ school.name }}, {{ school.location}}</h2>
+            <ul class="schools" v-if="schools && schools.length > 0">
+              <li v-for="item in schools">
+                  <h2>{{ item["school.name"]}} {{ item["school.state"]}}</h2>
               </li>
           </ul>
-        </div>  
+        </div>
   </div>      
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   name: "Home",
   data() {
     return {
       selectedState: "",
-      schools: "",
+      schools: [],
+      selected: "",
       states: [
         {
           name: "Alabama",
@@ -274,21 +275,24 @@ export default {
       ]
     };
   },
-};
 
-// Pull information from API 
+  // Pull information from API
   methods: {
-    findShools: function () {
-      axios.get('https://api.data.gov/ed/collegescorecard/v1/schools.json?api_key=d9xeq99pO8xRBij92yBUzmSIPR1P6v4RDAyQN53X&fields=school.name&school.state', {
-        // params: {
-        // }
+    findSchools: function() {
+      axios.get('https://api.data.gov/ed/collegescorecard/v1/schools.json', {
+      params: {
+        api_key: 'd9xeq99pO8xRBij92yBUzmSIPR1P6v4RDAyQN53X',
+        fields: 'school.name,school.state',
+        "school.state": this.selected
+
+       }
       })
       .then(response => {
-        this.schools = response.data
+      this.schools = response.data.results
       });
+    }
   }
-}
-
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
