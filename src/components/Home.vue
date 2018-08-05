@@ -13,7 +13,7 @@
         <div class="school-list">
             <ul class="schools" v-if="schools && schools.length > 0">
               <li v-for="item in schools">
-                <spinner v-if="showLoading"></spinner>
+                <!-- <spinner v-if="showLoading"></spinner> -->
                   <h2>{{ item["school.name"]}} | {{ item["school.school_url"]}}</h2>
               </li>
           </ul>
@@ -23,13 +23,13 @@
 
 <script>
 import axios from "axios";
-import BounceLoader from "@/components/BounceLoader";
+// import BounceLoader from "@/components/BounceLoader";
 
 export default {
   name: "Home",
-  components: {
-    "spinner": BounceLoader
-  },
+  // components: {
+  //   "spinner": BounceLoader
+  // },
 
   data() {
     return {
