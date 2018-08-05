@@ -32,7 +32,7 @@ body {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  background-color: red;
+  background-color: grey;
 }
 
 app {
