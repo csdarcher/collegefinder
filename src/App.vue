@@ -19,15 +19,20 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Righteous', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: silver;
+  color: white;
 }
 
 body {
-   background-color: #cc0000;
+  margin-top: 200px;
+  background-image: url('assets/scott-webb-270034-unsplash.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-color: red;
 }
 
 app {
@@ -38,14 +43,7 @@ h1,
 h2 {
   font-weight: normal;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+
 a {
   color: black;
 }
