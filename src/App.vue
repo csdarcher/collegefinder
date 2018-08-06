@@ -28,11 +28,10 @@ export default {
 
 body {
   margin-top: 200px;
-  background-image: url('assets/scott-webb-270034-unsplash.jpg');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  background-color: grey;
+  margin: 0;
+  padding: 250px;
+  height: 100%;
+  background-image:linear-gradient(to bottom right, #434343, #660000);
 }
 
 app {

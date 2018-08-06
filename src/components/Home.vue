@@ -1,6 +1,6 @@
 <template>
   <div id="home">
-    <h1>Your future starts here.</h1> 
+    <h1>College Finder - Your future starts here.</h1> 
      <p> Pick a location below to find out more about it's colleges and universities. </p>
       <form v-on:submit.prevent="findSchools"> 
         <select v-model="selected">
@@ -14,7 +14,7 @@
             <ul class="schools" v-if="schools && schools.length > 0">
               <li v-for="item in schools">
                 <!-- <spinner v-if="showLoading"></spinner> -->
-                  <h2>{{ item["school.name"]}} | {{ item["school.school_url"]}}</h2>
+                  <h2>{{ item["school.name"]}} | <a v-bind:href="school_url">{{item["school.school_url"]}}</a></h2>
               </li>
           </ul>
         </div>
@@ -309,6 +309,7 @@ h2 {
 }
 ul {
   padding: 0;
+  list-style: none;
 }
 
 a {
