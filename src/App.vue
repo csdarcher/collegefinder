@@ -8,6 +8,8 @@
 import Home from './components/Home'
 import CollegeList from './components/CollegeList'
 import CollegeInfo from './components/CollegeInfo'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 export default {
   name: 'App',

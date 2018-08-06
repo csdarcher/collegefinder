@@ -2,19 +2,21 @@
   <div id="home">
     <h1>College Finder - Your future starts here.</h1> 
      <p> Pick a location below to find out more about it's colleges and universities. </p>
-      <form v-on:submit.prevent="findSchools"> 
+      <b-form v-on:submit.prevent="findSchools"> 
         <select v-model="selected">
           <option v-for="state in states" v-bind:value="state.abbreviation">
             {{ state.name }} 
           </option>
         </select>
-        <input class="button" type="submit" value="Find">
-      </form> 
+        <input class="button" type="submit"  v-bind:to="{ name: 'CollegeList' }"value="Get My List!">
+       <!-- <router-link to="/CollegeList" tag="button">Get My List!</router-link> -->
+       <!-- <p><router-link v-bind:to="{ name: 'CollegeList', params: { schoolId: school.id } }" tag="button">Get My List!</router-link></p> -->
+      </b-form> 
         <div class="school-list">
             <ul class="schools" v-if="schools && schools.length > 0">
               <li v-for="item in schools">
                 <!-- <spinner v-if="showLoading"></spinner> -->
-                  <h2>{{ item["school.name"]}} | <a v-bind:href="school_url">{{item["school.school_url"]}}</a></h2>
+                  <h2>{{ item["school.name"]}} | <a target="_blank" v-bind:href="'http://' + item['school.school_url']">{{item["school.school_url"]}}</a></h2>
               </li>
           </ul>
         </div>
@@ -282,6 +284,8 @@ export default {
     };
   },
 
+
+
   // Pull information from API
   methods: {
     findSchools: function() {
@@ -297,7 +301,11 @@ export default {
       this.schools = response.data.results
       });
     }
-  }
+  },
+
+  schoolUrl: function(url){
+      return 'http://' + school_url;
+    }
 };
 </script>
 
