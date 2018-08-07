@@ -31,9 +31,11 @@ export default {
 body {
   margin-top: 200px;
   margin: 0;
-  padding: 250px;
+  padding: 175px;
   height: 100%;
   background-image:linear-gradient(to bottom right, #434343, #660000);
+  background-size: cover;
+
 }
 
 app {
