@@ -11,6 +11,7 @@ import CollegeInfo from './components/CollegeInfo'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+
 export default {
   name: 'App',
   components: {
@@ -20,8 +21,10 @@ export default {
 </script>
 
 <style>
+
 #app {
-  font-family: 'Righteous', Helvetica, Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -34,7 +37,6 @@ body {
   height: 100%;
   background-image:linear-gradient(to bottom right, #434343, #660000);
   background-size: cover;
-
 }
 
 app {
@@ -44,13 +46,17 @@ app {
 h1,
 h2 {
   font-weight: normal;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+p {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
 a {
   color: gold;
 }
 
-body,
 html {
   height: 100%;
 }

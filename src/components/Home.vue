@@ -20,7 +20,7 @@
                   <ul class="schools" v-if="schools && schools.length > 0">
                     <li v-for="item in schools">
                       <!-- <spinner v-if="showLoading"></spinner> -->
-                        <h3>{{ item["school.name"]}} | {{ item["school.city"]}} | <a target="_blank" v-bind:href="'http://' + item['school.school_url']">{{item["school.school_url"]}}</a></h3>
+                        <h4>{{ item["school.name"]}} | {{ item["school.city"]}} | <a target="_blank" v-bind:href="'http://' + item['school.school_url']">{{item["school.school_url"]}}</a></h4>
                     </li>
                 </ul>
               </div>    
