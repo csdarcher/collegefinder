@@ -1,9 +1,9 @@
 <template>
   <div id="home">
     <b-container class="state-search">
-        <div id="home">
-          <h1>College Finder - Your future starts here.</h1> 
-          <p> Pick a location below to find out more about it's colleges and universities. </p>
+       <h1>College Finder - Your future starts here.</h1>
+       <p>Trying to decide on what college or university to attend in the fall, but you don't even know where to start? <br>
+       Use this quick search tool to bring up a list of schools in the state/territory of your choice</p> 
             <b-form v-on:submit.prevent="findSchools"> 
               <select v-model="selected">
                 <option v-for="state in states" v-bind:value="state.abbreviation">
@@ -14,14 +14,13 @@
             <!-- <router-link to="/CollegeList" tag="button">Get My List!</router-link> -->
             <!-- <p><router-link v-bind:to="{ name: 'CollegeList', params: { schoolId: school.id } }" tag="button">Get My List!</router-link></p> -->
             </b-form> 
-          </div> 
     </b-container> 
           <b-container class="school-results"> 
               <div class="school-list">
                   <ul class="schools" v-if="schools && schools.length > 0">
                     <li v-for="item in schools">
                       <!-- <spinner v-if="showLoading"></spinner> -->
-                        <h2>{{ item["school.name"]}} | <a target="_blank" v-bind:href="'http://' + item['school.school_url']">{{item["school.school_url"]}}</a></h2>
+                        <h3>{{ item["school.name"]}} | {{ item["school.city"]}} | <a target="_blank" v-bind:href="'http://' + item['school.school_url']">{{item["school.school_url"]}}</a></h3>
                     </li>
                 </ul>
               </div>    
@@ -298,7 +297,7 @@ export default {
       axios.get('https://api.data.gov/ed/collegescorecard/v1/schools.json', {
       params: {
         api_key: 'd9xeq99pO8xRBij92yBUzmSIPR1P6v4RDAyQN53X',
-        fields: 'school.name,school.school_url',
+        fields: 'school.name,school.school_url,school.city',
         "school.state": this.selected
 
        }
@@ -326,13 +325,13 @@ ul {
   list-style: none;
 }
 
-a {
-  color: black;
-}
-
 body,
 html {
   height: 100%;
+}
+
+.school-results{
+  margin-top: 25px;
 }
 
 </style>

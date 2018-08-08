@@ -29,9 +29,8 @@ export default {
 }
 
 body {
-  margin-top: 200px;
   margin: 0;
-  padding: 175px;
+  padding-top: 175px;
   height: 100%;
   background-image:linear-gradient(to bottom right, #434343, #660000);
   background-size: cover;
@@ -48,7 +47,7 @@ h2 {
 }
 
 a {
-  color: black;
+  color: gold;
 }
 
 body,
