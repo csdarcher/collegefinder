@@ -1,16 +1,19 @@
 <template>
   <div id="home">
     <b-container class="state-search">
-       <h1>College Finder - Your future starts here.</h1>
-       <p>Trying to decide on what college or university to attend in the fall, but you don't even know where to start? <br>
-       Use this quick search tool to bring up a list of schools in the state/territory of your choice</p> 
-            <b-form v-on:submit.prevent="findSchools"> 
-              <select v-model="selected">
-                <option v-for="state in states" v-bind:value="state.abbreviation">
-                  {{ state.name }} 
-                </option>
-              </select>
-              <input class="button" type="submit"  v-bind:to="{ name: 'CollegeList' }"value="Get My List!">
+            <div style="font-size: 80px;">
+              <font-awesome-icon icon="graduation-cap"/>
+            </div>
+            <h1>College Finder - Your future starts here.</h1>
+              <p>Trying to decide on what college or university to attend in the fall, but you don't even know where to start? <br>
+              Use this quick search tool to bring up a list of schools in the state/territory of your choice</p> 
+              <b-form v-on:submit.prevent="findSchools"> 
+                <select v-model="selected">
+                  <option v-for="state in states" v-bind:value="state.abbreviation">
+                    {{ state.name }} 
+                  </option>
+                </select>
+                  <input class="button" type="submit"  v-bind:to="{ name: 'CollegeList' }"value="Get My List!">
             <!-- <router-link to="/CollegeList" tag="button">Get My List!</router-link> -->
             <!-- <p><router-link v-bind:to="{ name: 'CollegeList', params: { schoolId: school.id } }" tag="button">Get My List!</router-link></p> -->
             </b-form> 
@@ -20,7 +23,9 @@
                   <ul class="schools" v-if="schools && schools.length > 0">
                     <li v-for="item in schools">
                       <!-- <spinner v-if="showLoading"></spinner> -->
-                        <h4>{{ item["school.name"]}} | {{ item["school.city"]}} | <a target="_blank" v-bind:href="'http://' + item['school.school_url']">{{item["school.school_url"]}}</a></h4>
+                        <p>{{ item["school.name"]}}<br>
+                        {{ item["school.city"]}}</p> 
+                        <p><a target="_blank" v-bind:href="'http://' + item['school.school_url']">{{item["school.school_url"]}}</a></p>
                     </li>
                 </ul>
               </div>    
@@ -37,6 +42,7 @@ export default {
   // components: {
   //   "spinner": BounceLoader
   // },
+
 
   data() {
     return {
@@ -321,13 +327,26 @@ h2 {
   font-weight: normal;
 }
 ul {
-  padding: 0;
+  background-color: #F4F6F7;
+  padding: 0px;
+  margin: 0;
   list-style: none;
 }
 
-body,
-html {
-  height: 100%;
+ul li {
+  padding: 75px;
+}
+
+#home {
+  padding-top: 175px;
+} 
+
+.state-search {
+    text-align: center;
+}
+
+.icon {
+  size: 500px;
 }
 
 .school-results{

@@ -27,21 +27,18 @@ export default {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: white;
 }
 
+html,
 body {
   margin: 0;
-  padding-top: 175px;
   height: 100%;
-  background-image:linear-gradient(to bottom right, #434343, #660000);
+  background-image:linear-gradient(to bottom right, #A6ACAF, #660000);
   background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-app {
-    height: 100%;
-}
 
 h1,
 h2 {
@@ -54,10 +51,8 @@ p {
 }
 
 a {
-  color: gold;
+  color: #660000;
 }
 
-html {
-  height: 100%;
-}
+
 </style>
