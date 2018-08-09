@@ -4,10 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './Router'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faGraduationCap } from '@fortawesome/free-solid-svg-icons'
+import { faGraduationCap, faGlasses, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faGraduationCap)
+library.add(faGraduationCap, faSearch)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 

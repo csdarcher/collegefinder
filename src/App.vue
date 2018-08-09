@@ -33,7 +33,7 @@ html,
 body {
   margin: 0;
   height: 100%;
-  background-image:linear-gradient(to bottom right, #A6ACAF, #660000);
+  background-image:linear-gradient(to bottom right, #A6ACAF, #A3E4D7);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;

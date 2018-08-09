@@ -10,7 +10,7 @@
               <b-form v-on:submit.prevent="findSchools"> 
                 <select v-model="selected">
                   <option v-for="state in states" v-bind:value="state.abbreviation">
-                    {{ state.name }} 
+                    {{ state.name }}
                   </option>
                 </select>
                   <input class="button" type="submit"  v-bind:to="{ name: 'CollegeList' }"value="Get My List!">
@@ -23,8 +23,8 @@
                   <ul class="schools" v-if="schools && schools.length > 0">
                     <li v-for="item in schools">
                       <!-- <spinner v-if="showLoading"></spinner> -->
-                        <p>{{ item["school.name"]}}<br>
-                        {{ item["school.city"]}}</p> 
+                        <h3>{{ item["school.name"]}}</h3><br>
+                        {{ item["school.city"]}}, {{ item["school.state"]}}</p> 
                         <p><a target="_blank" v-bind:href="'http://' + item['school.school_url']">{{item["school.school_url"]}}</a></p>
                     </li>
                 </ul>
@@ -303,7 +303,7 @@ export default {
       axios.get('https://api.data.gov/ed/collegescorecard/v1/schools.json', {
       params: {
         api_key: 'd9xeq99pO8xRBij92yBUzmSIPR1P6v4RDAyQN53X',
-        fields: 'school.name,school.school_url,school.city',
+        fields: 'school.name,school.school_url,school.city,school.state',
         "school.state": this.selected
 
        }
@@ -331,10 +331,14 @@ ul {
   padding: 0px;
   margin: 0;
   list-style: none;
+  border-bottom: 10px;
+  border-color: #A6ACAF;
 }
 
 ul li {
-  padding: 75px;
+  padding: 65px;
+  border-bottom: 10px;
+  border-color: #A6ACAF;
 }
 
 #home {
@@ -345,9 +349,20 @@ ul li {
     text-align: center;
 }
 
-.icon {
-  size: 500px;
+.state-search {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
+
+.school-results {
+  border-bottom: 10px;
+  border-color: #A6ACAF;
+}
+
+.button {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  background-color: #D35400;
+}
+
 
 .school-results{
   margin-top: 25px;
