@@ -13,9 +13,7 @@
                     {{ state.name }}
                   </option>
                 </select>
-                  <input class="button" type="submit"  v-bind:to="{ name: 'CollegeList' }"value="Get My List!">
-            <!-- <router-link to="/CollegeList" tag="button">Get My List!</router-link> -->
-            <!-- <p><router-link v-bind:to="{ name: 'CollegeList', params: { schoolId: school.id } }" tag="button">Get My List!</router-link></p> -->
+                  <input class="button" type="submit"  v-bind:to="{ name: 'CollegeList' }"value="View Schools">
             </b-form> 
     </b-container> 
           <b-container class="school-results"> 
@@ -24,11 +22,12 @@
                     <li v-for="item in schools">
                       <!-- <spinner v-if="showLoading"></spinner> -->
                         <h3>{{ item["school.name"]}}</h3><br>
-                        {{ item["school.city"]}}, {{ item["school.state"]}}</p> 
+                        <p>{{ item["school.city"]}}, {{ item["school.state"]}}</p> 
+                        <p>{{ item["school.size"]}} Enrolled</p>
                         <p><a target="_blank" v-bind:href="'http://' + item['school.school_url']">{{item["school.school_url"]}}</a></p>
                     </li>
                 </ul>
-              </div>    
+              </div>  
     </b-container> 
   </div>  
 </template>
@@ -303,7 +302,7 @@ export default {
       axios.get('https://api.data.gov/ed/collegescorecard/v1/schools.json', {
       params: {
         api_key: 'd9xeq99pO8xRBij92yBUzmSIPR1P6v4RDAyQN53X',
-        fields: 'school.name,school.school_url,school.city,school.state',
+        fields: 'school.name,school.school_url,school.city,school.state,school.size',
         "school.state": this.selected
 
        }
@@ -359,13 +358,22 @@ ul li {
 }
 
 .button {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   background-color: #D35400;
 }
 
-
 .school-results{
   margin-top: 25px;
+}
+
+a {
+  float: right;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 
 </style>

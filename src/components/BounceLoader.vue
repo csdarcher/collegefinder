@@ -63,9 +63,6 @@ export default {
 .v-spinner .v-bounce {
 }
 
-.v-spinner .v-bounce1 {
-}
-
 .v-spinner .v-bounce2 {
   -webkit-animation: v-bounceStretchDelay 2s 1s infinite ease-in-out;
   animation: v-bounceStretchDelay 2s 1s infinite ease-in-out;
