@@ -15,19 +15,27 @@
                 </select>
                   <input class="button" type="submit"  v-bind:to="{ name: 'CollegeList' }"value="View Schools">
             </b-form> 
-    </b-container> 
-          <b-container class="school-results"> 
+                <!-- <div class="schoolCard" v-if="schools && schools.length > 0">
+                  <b-card :title=item"['school.name']"
+                          :sub-title=item"['school.city'], item['school.state']">
+                      <p class="card-text">
+                          <a target="_blank" v-bind:href="'http://' + item['school.school_url']">{{item["school.school_url"]}}</a>
+                      </p>
+                      <a href="#"
+                        class="card-link">Card link</a>
+                      <b-link href="#"
+                              class="card-link">Another link</b-link>
+                  </b-card> -->
               <div class="school-list">
                   <ul class="schools" v-if="schools && schools.length > 0">
                     <li v-for="item in schools">
-                      <!-- <spinner v-if="showLoading"></spinner> -->
+                       <!-- <spinner v-if="showLoading"></spinner>  -->
                         <h3>{{ item["school.name"]}}</h3><br>
                         <p>{{ item["school.city"]}}, {{ item["school.state"]}}</p> 
-                        <p>{{ item["school.size"]}} Enrolled</p>
-                        <p><a target="_blank" v-bind:href="'http://' + item['school.school_url']">{{item["school.school_url"]}}</a></p>
+                        <button><a target="_blank" v-bind:href="'http://' + item['school.school_url']">{{item["school.school_url"]}}</a></button>
                     </li>
                 </ul>
-              </div>  
+              </div>
     </b-container> 
   </div>  
 </template>
@@ -302,7 +310,7 @@ export default {
       axios.get('https://api.data.gov/ed/collegescorecard/v1/schools.json', {
       params: {
         api_key: 'd9xeq99pO8xRBij92yBUzmSIPR1P6v4RDAyQN53X',
-        fields: 'school.name,school.school_url,school.city,school.state,school.size',
+        fields: 'school.name,school.school_url,school.city,school.state',
         "school.state": this.selected
 
        }
@@ -359,21 +367,14 @@ ul li {
 
 .button {
   background-color: #D35400;
+  
 }
 
-.school-results{
+.school-list{
   margin-top: 25px;
+  text-align: left;
 }
 
-a {
-  float: right;
-}
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
 
 </style>
