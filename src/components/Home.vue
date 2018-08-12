@@ -33,6 +33,7 @@
                         <h3>{{ item["school.name"]}}</h3><br>
                         <p>{{ item["school.city"]}}, {{ item["school.state"]}}</p> 
                         <button><a target="_blank" v-bind:href="'http://' + item['school.school_url']">{{item["school.school_url"]}}</a></button>
+                        <hr class="narrow">
                     </li>
                 </ul>
               </div>
@@ -336,16 +337,14 @@ h2 {
 ul {
   background-color: #F4F6F7;
   padding: 0px;
-  margin: 0;
+  margin-bottom: 10px;
   list-style: none;
   border-bottom: 10px;
   border-color: #A6ACAF;
 }
 
 ul li {
-  padding: 65px;
-  border-bottom: 10px;
-  border-color: #A6ACAF;
+  padding: 10px;
 }
 
 #home {
@@ -360,19 +359,32 @@ ul li {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
-.school-results {
+.school-list{
   border-bottom: 10px;
-  border-color: #A6ACAF;
+  border-color: #D35400;
 }
 
 .button {
   background-color: #D35400;
+  font-weight: bold;
   
 }
 
 .school-list{
   margin-top: 25px;
   text-align: left;
+}
+
+hr { 
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 3px;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border: solid #ffb380;
+    border-width: .5px;
+
 }
 
 
