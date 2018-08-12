@@ -29,7 +29,7 @@
               <div class="school-list">
                   <ul class="schools" v-if="schools && schools.length > 0">
                     <li v-for="item in schools">
-                       <!-- <spinner v-if="showLoading"></spinner>  -->
+                       <spinner v-if="showLoading"></spinner>  
                         <h3>{{ item["school.name"]}}</h3><br>
                         <p>{{ item["school.city"]}}, {{ item["school.state"]}}</p> 
                         <button><a target="_blank" v-bind:href="'http://' + item['school.school_url']">{{item["school.school_url"]}}</a></button>
@@ -43,13 +43,13 @@
 
 <script>
 import axios from "axios";
-// import BounceLoader from "@/components/BounceLoader";
+import BounceLoader from "@/components/BounceLoader";
 
 export default {
   name: "Home",
-  // components: {
-  //   "spinner": BounceLoader
-  // },
+  components: {
+  spinner: BounceLoader
+  },
 
 
   data() {
@@ -308,6 +308,8 @@ export default {
   // Pull information from API
   methods: {
     findSchools: function() {
+      // Show spinner when API request begins here.
+      this.showSpinner = true;
       axios.get('https://api.data.gov/ed/collegescorecard/v1/schools.json', {
       params: {
         api_key: 'd9xeq99pO8xRBij92yBUzmSIPR1P6v4RDAyQN53X',
@@ -317,6 +319,8 @@ export default {
        }
       })
       .then(response => {
+      // Turn off spinner.
+      this.showSpinner = false;
       this.schools = response.data.results
       });
     }

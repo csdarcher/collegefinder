@@ -6,16 +6,16 @@
 
 <script>
 import Home from './components/Home'
-import CollegeList from './components/CollegeList'
-import CollegeInfo from './components/CollegeInfo'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import BounceLoader from '@/components/BounceLoader';
 
 
 export default {
   name: 'App',
   components: {
-    Home
+    Home,
+    spinner: BounceLoader
   }
 }
 </script>
@@ -61,6 +61,4 @@ hr {
     border-style: inset;
     border-width: 1px;
 }
-
-
 </style>
