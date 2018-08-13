@@ -25,18 +25,23 @@
                         class="card-link">Card link</a>
                       <b-link href="#"
                               class="card-link">Another link</b-link>
-                  </b-card> -->
-              <div class="school-list">
-                  <ul class="schools" v-if="schools && schools.length > 0">
-                    <li v-for="item in schools">
-                       <spinner v-if="showLoading"></spinner>  
-                        <h3>{{ item["school.name"]}}</h3><br>
-                        <p>{{ item["school.city"]}}, {{ item["school.state"]}}</p> 
-                        <button><a target="_blank" v-bind:href="'http://' + item['school.school_url']">{{item["school.school_url"]}}</a></button>
-                        <hr class="narrow">
-                    </li>
-                </ul>
-              </div>
+                  </b-card> -->     
+
+          
+                <!-- List of Schools -->  
+                <div class="school-list">
+                    <ul class="schools" v-if="schools && schools.length > 0">
+                      <transition-group name="fadeDown" tag="div" class="school-list" appear>
+                      <li v-for="item in schools">
+                        <spinner v-if="showLoading"></spinner>  
+                          <h3>{{ item["school.name"]}}</h3><br>
+                          <p>{{ item["school.city"]}}, {{ item["school.state"]}}</p> 
+                          <button><a target="_blank" v-bind:href="'http://' + item['school.school_url']">{{item["school.school_url"]}}</a></button>
+                          <hr class="narrow">
+                      </li>
+                      </transition-group>
+                  </ul>
+                </div>
     </b-container> 
   </div>  
 </template>
@@ -44,11 +49,13 @@
 <script>
 import axios from "axios";
 import BounceLoader from "@/components/BounceLoader";
+// Note: vue2-animate is added using the require statement because it is a CSS file
+require('vue2-animate/dist/vue2-animate.min.css');
 
 export default {
   name: "Home",
   components: {
-  spinner: BounceLoader
+  "spinner": BounceLoader
   },
 
 
@@ -58,6 +65,7 @@ export default {
       showLoading: false,
       schools: [],
       selected: "",
+      showSpinner: false,
       states: [
         {
           name: "Alabama",

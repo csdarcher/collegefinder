@@ -19,7 +19,8 @@
     "npm": "^6.3.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
-    "vue-spinner": "^1.0.3"
+    "vue-spinner": "^1.0.3",
+    "vue2-animate": "^2.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
