@@ -31,8 +31,8 @@
                 <!-- List of Schools -->  
                 <div class="school-list">
                     <ul class="schools" v-if="schools && schools.length > 0">
-                      <transition-group name="fadeDown" tag="div" class="school-list" appear>
-                      <li v-for="item in schools">
+                      <transition-group name="fadeRight" tag="div" class="school-list" appear>
+                      <li v-for="(item,index) in schools" :key="index">
                         <spinner v-if="showLoading"></spinner>  
                           <h3>{{ item["school.name"]}}</h3><br>
                           <p>{{ item["school.city"]}}, {{ item["school.state"]}}</p> 
@@ -65,7 +65,6 @@ export default {
       showLoading: false,
       schools: [],
       selected: "",
-      showSpinner: false,
       states: [
         {
           name: "Alabama",
@@ -316,8 +315,8 @@ export default {
   // Pull information from API
   methods: {
     findSchools: function() {
-      // Show spinner when API request begins here.
-      this.showSpinner = true;
+      // Show spinner when API request begins
+      this.showLoader = true;
       axios.get('https://api.data.gov/ed/collegescorecard/v1/schools.json', {
       params: {
         api_key: 'd9xeq99pO8xRBij92yBUzmSIPR1P6v4RDAyQN53X',
@@ -327,8 +326,8 @@ export default {
        }
       })
       .then(response => {
-      // Turn off spinner.
-      this.showSpinner = false;
+      // Turn off spinner
+      this.showLoader = false;
       this.schools = response.data.results
       });
     }
