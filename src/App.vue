@@ -8,14 +8,14 @@
 import Home from './components/Home'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import BounceLoader from '@/components/BounceLoader';
+import CircleSpinner from '@/components/CircleSpinner';
 
 
 export default {
   name: 'App',
   components: {
     Home,
-    spinner: BounceLoader
+    spinner: CircleSpinner
   }
 }
 </script>

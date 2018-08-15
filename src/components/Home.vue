@@ -1,10 +1,12 @@
 <template>
   <div id="home">
     <b-container class="state-search">
+      <header id="site-intro">
             <div style="font-size: 80px;">
               <font-awesome-icon icon="graduation-cap"/>
             </div>
             <h1>College Finder - Your future starts here.</h1>
+      </header>
               <p>Trying to decide on what college or university to attend in the fall, but you don't even know where to start? <br>
               Use this quick search tool to bring up a list of schools in the state/territory of your choice</p> 
               <b-form v-on:submit.prevent="findSchools"> 
@@ -12,27 +14,15 @@
                   <option disabled value="">Choose a location</option>
                   <option v-for="state in states" v-bind:value="state.abbreviation"> {{ state.name }} </option>
                 </select>
-                  <input class="button" type="submit"  v-bind:to="{ name: 'CollegeList' } "value="View Schools">
+                  <button type="submit"> <font-awesome-icon icon="search"/>  </button>
             </b-form> 
-                <!-- <div class="schoolCard" v-if="schools && schools.length > 0">
-                  <b-card :title=item"['school.name']"
-                          :sub-title=item"['school.city'], item['school.state']">
-                      <p class="card-text">
-                          <a target="_blank" v-bind:href="'http://' + item['school.school_url']">{{item["school.school_url"]}}</a>
-                      </p>
-                      <a href="#"
-                        class="card-link">Card link</a>
-                      <b-link href="#"
-                              class="card-link">Another link</b-link>
-                  </b-card> -->     
-
-          
+                
                 <!-- List of Schools -->  
                 <div class="school-list">
+                  <spinner v-if="showLoading"></spinner>  
                     <ul class="schools" v-if="schools && schools.length > 0">
                       <transition-group name="slideRight" tag="div" class="school-list" appear>
                       <li v-for="(item,index) in schools" :key="index">
-                        <spinner v-if="showLoading"></spinner>  
                           <h3>{{ item["school.name"]}}</h3><br>
                           <p>{{ item["school.city"]}}, {{ item["school.state"]}}</p> 
                           <button><a target="_blank" v-bind:href="'http://' + item['school.school_url']">{{item["school.school_url"]}}</a></button>
@@ -47,7 +37,7 @@
 
 <script>
 import axios from "axios";
-import BounceLoader from "@/components/BounceLoader";
+import CircleSpinner from "@/components/CircleSpinner";
 import states from "../states.js";
 // Note: vue2-animate is added using the require statement because it is a CSS file
 require('vue2-animate/dist/vue2-animate.min.css');
@@ -57,7 +47,7 @@ export default {
   data() {
     return {
       selectedState: "",
-      showLoading: false,
+      showLoading: true,
       schools: [],
       selected: "",
       states: states,
@@ -65,7 +55,7 @@ export default {
   },
 
   components: {
-  'spinner': BounceLoader
+  'spinner': CircleSpinner
   },
 
   // Pull information from API
@@ -131,9 +121,12 @@ ul li {
   border-color: #D35400;
 }
 
-.button {
+button {
   background-color: #D35400;
   font-weight: bold;
+  height: 50px;
+  width: 50px;
+  color: black;
   
 }
 
@@ -152,5 +145,16 @@ hr {
     border: solid #ffb380;
     border-width: .5px;
 
+}
+
+form {
+  margin-right: 60px;
+  margin-left: 60px;
+
+}
+
+select {
+  width: 400px;
+  height: 50px;
 }
 </style>
