@@ -3,10 +3,7 @@ export default
       name: "Alabama",
       abbreviation: "AL"
     },
-    {
-      name: "Alabama",
-      abbreviation: "AL"
-    },
+  
     {
       name: "Alaska",
       abbreviation: "AK"

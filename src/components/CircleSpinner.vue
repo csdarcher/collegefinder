@@ -11,6 +11,7 @@ export default {
 <style>
 
 .lds-circle {
+  position: relative;
   display: inline-block;
   width: 51px;
   height: 51px;
