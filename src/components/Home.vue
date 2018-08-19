@@ -4,7 +4,9 @@
       <b-row>
             <div style="font-size: 80px;">
               <font-awesome-icon icon="graduation-cap"/>
-            </div>    
+            </div>   
+      </b-row>
+      <b-row> 
             <h1>College Finder - Your future starts here.</h1> 
               <p>Trying to decide on what college or university to attend in the fall, but you don't even know where to start? <br>
               Use this quick search tool to bring up a list of schools in the state/territory of your choice</p>   
@@ -67,7 +69,7 @@ export default {
     findSchools: function() {
       // Show spinner when API request begins
       this.showLoading = true;
-      if (this.selectedState.length < 1)
+      if (this.selectedState.length !== 1)
         this.errors.push("Please choose a location.");
       axios
         .get("https://api.data.gov/ed/collegescorecard/v1/schools.json", {
@@ -81,22 +83,17 @@ export default {
           // Turn off spinner
           this.showLoading = false;
           this.schools = response.data.results;
-        });
-    }
-    .catch(e => {
+        })
+
+        .catch(e => {
         this.errors.push(e);
-      })
+         });
+    }
   },
 
   schoolUrl: function(url) {
     return "http://" + school_url;
   }
-
-  .catch(error => {
-      // turn off spinner
-      this.showSpinner = false;
-      console.log(error);
-    })
 };
 </script>
 
@@ -135,6 +132,7 @@ ul li {
   border-bottom: 10px;
   margin-top: 25px;
   text-align: left;
+  width: 100%;
 }
 
 button {
