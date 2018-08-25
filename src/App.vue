@@ -27,6 +27,7 @@ export default {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smootdisplay: block;
+
 }
 
 html,
@@ -48,7 +49,7 @@ h2 {
 
 p {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  text-align: left;
+  text-align: center;
 }
 
 

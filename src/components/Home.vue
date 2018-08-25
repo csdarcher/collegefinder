@@ -2,20 +2,21 @@
   <div id="home">
     <b-container class="state-search">
       <b-row>
-        <b-col cols="12" md="2" lg="2">
+        <b-col>
             <div style="font-size: 80px;">
               <font-awesome-icon icon="graduation-cap"/>
             </div>   
         </b-col>  
       </b-row>
       <b-row> 
-        <b-col cols="12" md="10" lg="10">
+        <b-col>
             <h1>College Finder - Your future starts here.</h1> 
               <p>Trying to decide on what college or university to attend in the fall, but you don't even know where to start? <br>
               Use this quick search tool to bring up a list of schools in the state/territory of your choice</p>   
         </b-col>      
       </b-row> 
       <b-row>
+        <b-col>
               <b-form v-on:submit.prevent="findSchools">    
                 <b-select v-model="selected">
                   <option disabled value="">Choose a location</option>
@@ -23,6 +24,7 @@
                 </b-select>    
                   <b-button class="state-search" type="submit"> <font-awesome-icon icon="search"/></b-button>        
               </b-form> 
+        </b-col>     
       </b-row>    
         <b-row> 
               <!-- List of Schools -->  
@@ -103,10 +105,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1,
-h2 {
-  font-weight: normal;
-}
+
 ul {
   background-color: #f4f6f7;
   margin-bottom: 10px;
@@ -123,32 +122,29 @@ ul li {
 }
 
 ul a {
-  color: silver;
+  color: black;
 }
 
 
 #home {
-  padding-top: 50px;
+  padding-top: 25px;
   margin: 10px;
+  display: inline;
 }
 
 .state-search {
   text-align: center;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  margin: 15px;
   display: inline;
 }
 
 .school-list {
   border-bottom: 10px;
-  text-align: center;
   width: 100%;
   margin: 15px;
 }
 
-.school-list p {
-  text-align: center;
-}
+
 
 button {
   background-color: #d35400;
@@ -172,7 +168,6 @@ hr {
 select {
   width: 450px;
   height: 50px;
-  margin-left: 10px;
 }
 
  ul.errors {
