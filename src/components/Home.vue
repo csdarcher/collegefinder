@@ -70,13 +70,18 @@ export default {
     spinner: CircleSpinner
   },
 
-  // Pull information from API
+  // Pull in information from API
   methods: {
     findSchools: function() {
-      // Show spinner when API request begins
-      this.showLoading = true;
+     
       if (this.selectedState.length !== 1)
+      {
         this.errors.push("Whoops!Please choose a location.");
+        console.log =("No location chosen");
+      } else {
+    
+      // Show spinner when API request begins      
+      this.showLoading = true;  
       axios
         .get("https://api.data.gov/ed/collegescorecard/v1/schools.json", {
           params: {
@@ -91,18 +96,21 @@ export default {
           this.schools = response.data.results;
         })
 
-        .catch(e => {
-        this.errors.push(e);
+        .catch(error => {
+          // turn off spinner
+          this.showSpinner = false;
+          console.log(error);
          });
     }
   },
 
   schoolUrl: function(url) {
     return "http://" + school_url;
+    }
   }
 };
-</script>
 
+</script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
