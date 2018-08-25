@@ -2,22 +2,26 @@
   <div id="home">
     <b-container class="state-search">
       <b-row>
+        <b-col cols="12" md="2" lg="2">
             <div style="font-size: 80px;">
               <font-awesome-icon icon="graduation-cap"/>
             </div>   
+        </b-col>  
       </b-row>
       <b-row> 
+        <b-col cols="12" md="10" lg="10">
             <h1>College Finder - Your future starts here.</h1> 
               <p>Trying to decide on what college or university to attend in the fall, but you don't even know where to start? <br>
               Use this quick search tool to bring up a list of schools in the state/territory of your choice</p>   
+        </b-col>      
       </b-row> 
       <b-row>
-              <b-form v-on:submit.prevent="findSchools"> 
+              <b-form v-on:submit.prevent="findSchools">    
                 <b-select v-model="selected">
                   <option disabled value="">Choose a location</option>
                   <option v-for="state in states" v-bind:value="state.abbreviation"> {{ state.name }} </option>
-                </b-select>
-                  <b-button class="state-search" type="submit"> <font-awesome-icon icon="search"/></b-button>
+                </b-select>    
+                  <b-button class="state-search" type="submit"> <font-awesome-icon icon="search"/></b-button>        
               </b-form> 
       </b-row>    
         <b-row> 
@@ -70,7 +74,7 @@ export default {
       // Show spinner when API request begins
       this.showLoading = true;
       if (this.selectedState.length !== 1)
-        this.errors.push("Please choose a location.");
+        this.errors.push("Whoops!Please choose a location.");
       axios
         .get("https://api.data.gov/ed/collegescorecard/v1/schools.json", {
           params: {
@@ -109,39 +113,49 @@ ul {
   list-style: none;
   border-bottom: 10px;
   border-color: #a6acaf;
+  padding-left: 0;
+  text-align: center;
+  width: 100%;
 }
 
 ul li {
   padding: 10px;
 }
 
+ul a {
+  color: silver;
+}
+
+
 #home {
-  padding-top: 150px;
+  padding-top: 50px;
+  margin: 10px;
 }
 
 .state-search {
   text-align: center;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-}
-
-.schools {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin: 15px;
+  display: inline;
 }
 
 .school-list {
   border-bottom: 10px;
-  margin-top: 25px;
-  text-align: left;
+  text-align: center;
   width: 100%;
+  margin: 15px;
+}
+
+.school-list p {
+  text-align: center;
 }
 
 button {
   background-color: #d35400;
   font-weight: bold;
   height: 50px;
-  width: 50px;
-  color: black;
 }
+
 
 hr {
   display: block;
@@ -156,7 +170,19 @@ hr {
 
 
 select {
-  width: 400px;
+  width: 450px;
   height: 50px;
+  margin-left: 10px;
 }
+
+ ul.errors {
+  list-style-type: none;
+}
+.errors li {
+  border: 1px solid red;
+  color: red;
+  padding: 0.5rem;
+  margin: 10px 0;
+}
+
 </style>
