@@ -71,7 +71,7 @@ export default {
     findSchools: function() {
       // Show spinner when API request begins
       this.showLoading = false;
-      if (this.selectedState.Value === "")
+      if (this.selectedState.length == 'null' )
       {
         alert("Whoops!Please choose a location.");
       }else{
@@ -85,14 +85,14 @@ export default {
         });
       };
     }
-        // .then(response => {
-        //   // Turn off spinner
-        //   this.showLoading = false;
-        //   this.schools = response.data.results;
-        // })
-        // .catch(e => {
-        // this.errors.push(e);
-        //  })
+        .then(response => {
+          // Turn off spinner
+          this.showLoading = false;
+          this.schools = response.data.results;
+        })
+        .catch(e => {
+        this.errors.push(e);
+         })
     },
 
     schoolUrl: function(url) {
