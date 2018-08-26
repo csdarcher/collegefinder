@@ -45,14 +45,12 @@
     </b-container> 
   </div>  
 </template>
-
 <script>
 import axios from "axios";
 import CircleSpinner from "@/components/CircleSpinner";
 import states from "../states.js";
 // Note: vue2-animate is added using the require statement because it is a CSS file
 require("vue2-animate/dist/vue2-animate.min.css");
-
 export default {
   name: "Home",
   data() {
@@ -65,55 +63,46 @@ export default {
       states: states
     };
   },
-
   components: {
     spinner: CircleSpinner
   },
-
-  // Pull in information from API
+  // Pull information from API
   methods: {
     findSchools: function() {
-     
-      if (this.selectedState.length < 1)
+      // Show spinner when API request begins
+      this.showLoading = false;
+      if (this.selectedState.Value === "")
       {
-        this.errors.push("Whoops!Please choose a location.");
-        console.log =("No location chosen");
-      } else {
-    
-      // Show spinner when API request begins      
-      this.showLoading = true;  
-      axios
+        alert("Whoops!Please choose a location.");
+      }else{
+        axios
         .get("https://api.data.gov/ed/collegescorecard/v1/schools.json", {
           params: {
             api_key: "d9xeq99pO8xRBij92yBUzmSIPR1P6v4RDAyQN53X",
             fields: "school.name,school.school_url,school.city,school.state",
             "school.state": this.selected
           }
-        })
-        .then(response => {
-          // Turn off spinner
-          this.showLoading = false;
-          this.schools = response.data.results;
-        })
-
-        .catch(error => {
-          // turn off spinner
-          this.showSpinner = false;
-          console.log(error);
-         });
+        });
+      };
     }
-  },
+        // .then(response => {
+        //   // Turn off spinner
+        //   this.showLoading = false;
+        //   this.schools = response.data.results;
+        // })
+        // .catch(e => {
+        // this.errors.push(e);
+        //  })
+    },
 
-  schoolUrl: function(url) {
-    return "http://" + school_url;
+    schoolUrl: function(url) {
+      return "http://" + school_url;
     }
   }
-};
 
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 ul {
   background-color: #f4f6f7;
   margin-bottom: 10px;
@@ -124,43 +113,32 @@ ul {
   text-align: center;
   width: 100%;
 }
-
 ul li {
   padding: 10px;
 }
-
 ul a {
   color: black;
 }
-
-
 #home {
   padding-top: 25px;
   margin: 10px;
   display: inline;
 }
-
 .state-search {
   text-align: center;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   display: inline;
 }
-
 .school-list {
   border-bottom: 10px;
   width: 100%;
   margin: 15px;
 }
-
-
-
 button {
   background-color: #d35400;
   font-weight: bold;
   height: 50px;
 }
-
-
 hr {
   display: block;
   margin-top: 10px;
@@ -171,14 +149,12 @@ hr {
   border: solid #ffb380;
   border-width: 0.5px;
 }
-
-
 select {
   width: 450px;
   height: 50px;
 }
 
- ul.errors {
+ /* ul.errors {
   list-style-type: none;
 }
 .errors li {
@@ -186,6 +162,7 @@ select {
   color: red;
   padding: 0.5rem;
   margin: 10px 0;
-}
-
+} */
 </style>
+
+
