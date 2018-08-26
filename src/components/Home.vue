@@ -74,7 +74,7 @@ export default {
   methods: {
     findSchools: function() {
      
-      if (this.selectedState.length !== 1)
+      if (this.selectedState.length < 1)
       {
         this.errors.push("Whoops!Please choose a location.");
         console.log =("No location chosen");
