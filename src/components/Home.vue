@@ -66,39 +66,71 @@ export default {
   components: {
     spinner: CircleSpinner
   },
+
   // Pull information from API
   methods: {
     findSchools: function() {
       // Show spinner when API request begins
-      this.showLoading = false;
-      if (this.selectedState.length == 'null' )
-      {
-        alert("Whoops!Please choose a location.");
-      }else{
-        axios
+      this.showLoading = true;
+      if (this.selected.length <1)
+        alert ("Whoops!Please choose a location.");
+      axios
         .get("https://api.data.gov/ed/collegescorecard/v1/schools.json", {
           params: {
             api_key: "d9xeq99pO8xRBij92yBUzmSIPR1P6v4RDAyQN53X",
             fields: "school.name,school.school_url,school.city,school.state",
             "school.state": this.selected
           }
-        });
-      };
-    }
+        })
         .then(response => {
           // Turn off spinner
           this.showLoading = false;
           this.schools = response.data.results;
         })
+
         .catch(e => {
         this.errors.push(e);
-         })
-    },
-
-    schoolUrl: function(url) {
-      return "http://" + school_url;
+         });
     }
+  },
+
+  schoolUrl: function(url) {
+    return "http://" + school_url;
   }
+};
+  // Pull information from API
+  // methods: {
+  //   findSchools: function() {
+  //     // Show spinner when API request begins
+  //     this.showLoading = false;
+  //     if (this.selectedState.length < 0 )
+  //     {
+  //       alert("Whoops!Please choose a location.");
+  //     }else{
+  //       axios
+  //       .get("https://api.data.gov/ed/collegescorecard/v1/schools.json", {
+  //         params: {
+  //           api_key: "d9xeq99pO8xRBij92yBUzmSIPR1P6v4RDAyQN53X",
+  //           fields: "school.name,school.school_url,school.city,school.state",
+  //           "school.state": this.selected
+  //         }
+  //       });
+  //     };
+  //   }
+  //       // .then(response => {
+  //       //   // Turn off spinner
+  //       //   this.showLoading = false;
+  //       //   this.schools = response.data.results;
+  //       // })
+  //       // .catch(e => {
+  //       // this.errors.push(e);
+  //       //  })
+  //   },
+
+  //   schoolUrl: function(url) {
+  //     return "http://" + school_url;
+  //   }
+  // }
 
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
