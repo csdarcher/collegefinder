@@ -22,7 +22,7 @@
                   <option disabled value="">Choose a location</option>
                   <option v-for="state in states" v-bind:value="state.abbreviation"> {{ state.name }} </option>
                 </b-select>    
-                  <b-button class="state-search" type="submit"> <font-awesome-icon icon="search"/></b-button>        
+                  <b-button class="button" type="submit"> <font-awesome-icon icon="search"/></b-button>        
               </b-form> 
         </b-col>     
       </b-row>    
@@ -35,13 +35,13 @@
                     <li v-for="(item,index) in schools" :key="index">
                         <h3>{{ item["school.name"]}}</h3><br>
                         <p>{{ item["school.city"]}}, {{ item["school.state"]}}</p> 
-                        <b-button class="school-link"><a target="_blank" v-bind:href="'http://' + item['school.school_url']">{{item["school.school_url"]}}</a></b-button>
+                        <b-button class="button"><a target="_blank" v-bind:href="'http://' + item['school.school_url']">{{item["school.school_url"]}}</a></b-button>
                         <hr class="narrow">
                     </li>
                     </transition-group>
                 </ul>
               </div>
-        </b-row>
+        </b-row>  
     </b-container> 
   </div>  
 </template>
@@ -55,7 +55,6 @@ export default {
   name: "Home",
   data() {
     return {
-      selectedState: "",
       showLoading: false,
       schools: [],
       errors: [],
@@ -70,10 +69,10 @@ export default {
   // Pull information from API
   methods: {
     findSchools: function() {
-      // Show spinner when API request begins
-      this.showLoading = true;
       if (this.selected.length <1)
         alert ("Whoops!Please choose a location.");
+      // Show spinner when API request begins
+      this.showLoading = true;
       axios
         .get("https://api.data.gov/ed/collegescorecard/v1/schools.json", {
           params: {
@@ -98,39 +97,6 @@ export default {
     return "http://" + school_url;
   }
 };
-  // Pull information from API
-  // methods: {
-  //   findSchools: function() {
-  //     // Show spinner when API request begins
-  //     this.showLoading = false;
-  //     if (this.selectedState.length < 0 )
-  //     {
-  //       alert("Whoops!Please choose a location.");
-  //     }else{
-  //       axios
-  //       .get("https://api.data.gov/ed/collegescorecard/v1/schools.json", {
-  //         params: {
-  //           api_key: "d9xeq99pO8xRBij92yBUzmSIPR1P6v4RDAyQN53X",
-  //           fields: "school.name,school.school_url,school.city,school.state",
-  //           "school.state": this.selected
-  //         }
-  //       });
-  //     };
-  //   }
-  //       // .then(response => {
-  //       //   // Turn off spinner
-  //       //   this.showLoading = false;
-  //       //   this.schools = response.data.results;
-  //       // })
-  //       // .catch(e => {
-  //       // this.errors.push(e);
-  //       //  })
-  //   },
-
-  //   schoolUrl: function(url) {
-  //     return "http://" + school_url;
-  //   }
-  // }
 
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -166,7 +132,7 @@ ul a {
   width: 100%;
   margin: 15px;
 }
-button {
+.button {
   background-color: #d35400;
   font-weight: bold;
   height: 50px;
@@ -181,20 +147,15 @@ hr {
   border: solid #ffb380;
   border-width: 0.5px;
 }
+
+
+
+
 select {
   width: 450px;
   height: 50px;
 }
 
- /* ul.errors {
-  list-style-type: none;
-}
-.errors li {
-  border: 1px solid red;
-  color: red;
-  padding: 0.5rem;
-  margin: 10px 0;
-} */
 </style>
 
 
