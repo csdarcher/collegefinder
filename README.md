@@ -1,6 +1,17 @@
 # collegefinder
 
-> A Vue.js project
+## By Carly Darcher [portfolio](http://carlydarcher.com/) [email](casdarcher@gmail.com)
+
+> This site was built using the College Scorecard API, Vue.Js and webpack. 
+
+AN IMPORTANT NOTE: The most recent data this API has access to is from 2015.
+
+This site utilizes vue-analytics and axios via npm install. The graduation and seach icons are from fontawesome.The loading animation is pure CSS and comes from [loadi.io](https://loading.io/css/). 
+
+This site was a final project for Seattle University's Web Dev Certificate (2018). 
+
+
+
 
 ## Build Setup
 
