@@ -7,6 +7,10 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faGraduationCap, faGlasses, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import VueAnalytics from 'vue-analytics'
+import es6Promise from 'es6-promise' 
+
+// IE 11 code
+es6Promise.polyfill()
 
 library.add(faGraduationCap, faSearch)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
