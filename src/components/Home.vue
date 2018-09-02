@@ -34,7 +34,7 @@
                     <transition-group name="slideRight" tag="div" class="school-list" appear>
                     <li v-for="(item,index) in schools" :key="index">
                         <h3>{{ item["school.name"]}}</h3><br>
-                        <p>{{ item["school.city"]}}, {{ item["school.state"]}}</p> 
+                        <p>{{ item ["year.student.size"]}} {{ item["school.city"]}}, {{ item["school.state"]}}</p> 
                         <b-button class="button"><a target="_blank" v-bind:href="'http://' + item['school.school_url']">{{item["school.school_url"]}}</a></b-button>
                         <hr class="narrow">
                     </li>
@@ -77,8 +77,9 @@ export default {
         .get("https://api.data.gov/ed/collegescorecard/v1/schools.json", {
           params: {
             api_key: "d9xeq99pO8xRBij92yBUzmSIPR1P6v4RDAyQN53X",
-            fields: "school.name,school.school_url,school.city,school.state",
-            "school.state": this.selected
+            fields: "school.name,school.school_url,school.city,school.state,school.year.student.size",
+            "school.state": this.selected,
+            "year": 2017
           }
         })
         .then(response => {
