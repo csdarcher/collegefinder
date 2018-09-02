@@ -34,7 +34,7 @@
                     <transition-group name="slideRight" tag="div" class="school-list" appear>
                     <li v-for="(item,index) in schools" :key="index">
                         <h3>{{ item["school.name"]}}</h3><br>
-                        <p>2015 enrollment: {{ item["2015.student.size"]}} students | Location {{ item["school.city"]}}, {{ item["school.state"]}}</p> 
+                        <p>2015 enrollment: {{ item["2015.student.size"]}} students | Location: {{ item["school.city"]}}, {{ item["school.state"]}}</p> 
                         <b-button class="button"><a target="_blank" v-bind:href="'http://' + item['school.school_url']">{{item["school.school_url"]}}</a></b-button>
                         <hr class="narrow">
                     </li>
