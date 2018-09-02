@@ -147,10 +147,6 @@ hr {
   border: solid #ffb380;
   border-width: 0.5px;
 }
-
-
-
-
 select {
   width: 450px;
   height: 50px;
