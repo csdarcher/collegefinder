@@ -6,7 +6,7 @@
 
 AN IMPORTANT NOTE: In order to work with the College Scorecard API, you will need an API key. Access to an API key can be found here (https://api.data.gov/signup/). Additionally, the most recent enrollment data is from 2015. 
 
-This site utilizes Bootstrap, vue-analytics, and axios via npm install. The graduation and seach icons are from fontawesome. The loading animation is pure CSS and comes from [loadi.io](https://loading.io/css/). 
+This site utilizes Bootstrap, vue-analytics, and axios via npm install. The graduation and search icons are from fontawesome. The loading animation is pure CSS and comes from [loadi.io](https://loading.io/css/). 
 
 This site was a final project for Seattle University's Web Dev Certificate (2018). 
 
