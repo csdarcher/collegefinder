@@ -2,11 +2,11 @@
 
 ## By Carly Darcher [portfolio](http://carlydarcher.com/) [email](casdarcher@gmail.com)
 
-> This site was built using the College Scorecard API, Vue.Js and webpack. 
+> This site was built using the College Scorecard API, Vue.Js, and webpack. 
 
-AN IMPORTANT NOTE: The most recent data this API has access to is from 2015.
+AN IMPORTANT NOTE: In order to work with the College Scorecard API, you will need an API key. Access to an API key can be found here (https://api.data.gov/signup/)
 
-This site utilizes vue-analytics and axios via npm install. The graduation and seach icons are from fontawesome.The loading animation is pure CSS and comes from [loadi.io](https://loading.io/css/). 
+This site utilizes Bootstrap, vue-analytics, and axios via npm install. The graduation and seach icons are from fontawesome. The loading animation is pure CSS and comes from [loadi.io](https://loading.io/css/). 
 
 This site was a final project for Seattle University's Web Dev Certificate (2018). 
 
