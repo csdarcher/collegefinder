@@ -18,9 +18,9 @@
       <b-row>
         <b-col>
               <b-form v-on:submit.prevent="findSchools">    
-                <b-select v-model="selected" label="Choose a location">
+                <b-select v-model="selected">
                   <option disabled value="">Choose a location</option>
-                  <option v-for="state in states" v-bind:value="state.abbreviation"> {{ state.name }} </option>
+                  <option v-for="state in states" v-bind:value="state.abbreviation"> {{ state.name }}</option>
                 </b-select>    
                   <b-button class="button" input type="submit"> Search <font-awesome-icon icon="search"/></b-button>        
               </b-form> 
